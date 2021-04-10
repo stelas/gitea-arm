@@ -40,3 +40,5 @@ jobs:
         with:
           context: .
           platforms: arm
+          push: true
+          tags: stelas/gitea-arm:latest
