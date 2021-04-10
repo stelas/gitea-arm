@@ -16,7 +16,8 @@ jobs:
       - name: Checkout repository under $GITHUB_WORKSPACE
         uses: actions/checkout@v2.3.4
         with:
-          repository: go-gitea/gitea@v1.13.7
+          repository: go-gitea/gitea
+          ref: v1.13.7
 
       - name: Docker Setup QEMU
         uses: docker/setup-qemu-action@v1.0.2
