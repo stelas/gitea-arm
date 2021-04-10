@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Gitea repository under $GITHUB_WORKSPACE
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout repository under $GITHUB_WORKSPACE
+        uses: actions/checkout@v2.3.4
         with:
           repository: go-gitea/gitea@v1.13.7
 
