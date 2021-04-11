@@ -1,0 +1,22 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fetch versions on Git and Docker hubs
+        run: |
+          echo "gitea_github_version=$(curl -sL https://api.github.com/repos/go-gitea/gitea/releases/latest | jq -r '.tag_name | sub("^v";"")')" >> $GITHUB_ENV
+          echo "gitea_docker_version=$(curl -sL https://hub.docker.com/v2/repositories/stelas/gitea-arm/tags/${{ env.gitea_github_version }} | jq -r '.name')" >> $GITHUB_ENV
+
+      - name: Output versions
+        run: |
+          echo "GitHub: ${{ env.gitea_github_version }}"
+          echo "Docker: ${{ env.gitea_docker_version }}"
