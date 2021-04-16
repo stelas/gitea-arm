@@ -57,6 +57,11 @@ jobs:
           repository: go-gitea/gitea
           ref: "v${{ needs.check.outputs.version }}"
 
+      - name: Downgrade Alpine 3.13 to 3.12
+        shell: bash
+        run: |
+          sed -i '/alpine/ s/3.13/3.12/' Dockerfile
+
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v1.0.2
 
