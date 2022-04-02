@@ -57,11 +57,6 @@ jobs:
           repository: go-gitea/gitea
           ref: "v${{ needs.check.outputs.version }}"
 
-      - name: Upgrade Alpine 3.13 to 3.14
-        shell: bash
-        run: |
-          sed -i '/alpine/ s/3.13/3.14/' Dockerfile
-
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v1.0.2
 
